@@ -19,7 +19,7 @@ class Account < ActiveRecord::Base
   # This method is for authentication purpose.
   #
   def self.authenticate(email, password)
-    account = first(:conditions => ["lower(email) = lower(?)", email]) if email.present?
+    account = where("lower(email) = lower(?)", email).first if email.present?
     account && account.has_password?(password) ? account : nil
   end
 
@@ -28,11 +28,14 @@ class Account < ActiveRecord::Base
   end
 
   private
-    def encrypt_password
-      self.crypted_password = ::BCrypt::Password.create(password)
-    end
 
-    def password_required
-      crypted_password.blank? || password.present?
-    end
+  def encrypt_password
+    value = ::BCrypt::Password.create(password)
+    value = value.force_encoding(Encoding::UTF_8) if value.encoding == Encoding::ASCII_8BIT
+    self.crypted_password = value
+  end
+
+  def password_required
+    crypted_password.blank? || password.present?
+  end
 end
