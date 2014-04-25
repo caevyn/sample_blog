@@ -23,7 +23,7 @@ module SampleBlog
     #
 
     set :admin_model, 'Account'
-    set :login_page,  '/admin/sessions/new'
+    set :login_page,  '/sessions/new'
 
     enable  :sessions
     disable :store_location
