@@ -21,11 +21,12 @@ gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 
 # Test requirements
+#gem "minitest", "~> 4.0"
 gem 'shoulda', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.1'
+gem 'padrino', '0.12.2'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
