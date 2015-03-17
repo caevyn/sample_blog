@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 
 # Server requirements
 # gem 'thin' # or mongrel
+gem 'puma'
 # gem 'trinidad', :platform => 'jruby'
 
 # Optional JSON codec (faster performance)
